@@ -28,7 +28,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--font)}
 
 /* ── DESKTOP ── */
 #desktop{
-  width:100vw;height:100vh;
+  width:100vw;height:100vh;height:100dvh;
   background:linear-gradient(135deg,#0f0c29 0%,#1a1a3e 35%,#24243e 60%,#0d1b4b 100%);
   position:relative;overflow:hidden;
   display:flex;flex-direction:column;
@@ -162,6 +162,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--font)}
   overflow:hidden;
   display:flex;flex-direction:column;
   max-height:calc(100vh - 70px);
+  max-height:calc(100dvh - 70px);
   max-width:calc(100vw - 40px);
   min-width:360px;min-height:200px;
   z-index:200;
@@ -326,6 +327,69 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--font)}
 .ctx-sep{height:1px;background:rgba(255,255,255,0.08);margin:4px 2px}
 
 #clock{font-variant-numeric:tabular-nums}
+#view-counter{
+  display:none;
+  font-size:10px;
+  color:rgba(255,255,255,0.55);
+  text-align:right;
+  line-height:1.2;
+  font-family:var(--mono);
+  margin-top:2px;
+}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 600px){
+  /* Make the icon grid usable on phones */
+  #icon-area{
+    padding:18px 12px;
+    grid-template-columns:repeat(auto-fill,minmax(70px,1fr));
+    grid-auto-rows:90px;
+    gap:6px;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .desktop-icon{gap:5px;padding:6px 2px}
+  .icon-img{
+    width:48px;height:48px;border-radius:10px;
+    font-size:22px;
+  }
+  .icon-label{
+    font-size:10px;
+    max-width:64px;
+  }
+
+  /* Keep the sticky note from feeling too large */
+  .sticky-note{
+    width:170px;
+    font-size:11px;
+    padding:12px 14px;
+  }
+
+  /* Force all windows to fit inside the viewport */
+  .window{
+    left:10px !important;
+    right:10px !important;
+    top:56px !important;
+    width:auto !important;
+    min-width:0 !important;
+    max-width:none !important;
+    max-height:calc(100dvh - 56px - 8px);
+  }
+  .win-titlebar{height:36px;padding:0 10px}
+  .win-title-text{font-size:11px;margin-right:44px}
+  .win-body{padding:16px 14px}
+  .win-h1{font-size:20px}
+  .win-p{font-size:12.8px}
+
+  .skills-win-grid{grid-template-columns:1fr}
+  .impact-row{flex-direction:column}
+  .proj-win-header{height:110px;font-size:42px;margin-bottom:14px}
+}
+
+@media (max-width: 420px){
+  #icon-area{grid-auto-rows:84px}
+  .proj-win-header{font-size:38px}
+}
 </style>
 </head>
 <body>
@@ -357,7 +421,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--font)}
     </div>
     <div class="desktop-icon" data-win="proj4" data-link="">
       <div class="icon-img ic-orange">📈</div>
-      <span class="icon-label">Stock Analysis</span>
+      <span class="icon-label">Stock Market Behavior Analysis</span>
     </div>
     <div class="desktop-icon" data-win="skills" data-link="">
       <div class="icon-img ic-folder">📁</div>
@@ -404,6 +468,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--font)}
       <div class="tb-clock">
         <div id="clock">00:00</div>
         <div id="date-display" style="font-size:10.5px;color:rgba(255,255,255,0.5)">Thu, Mar 19</div>
+        <div id="view-counter">Views: 0</div>
       </div>
     </div>
   </div>
@@ -602,24 +667,23 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--font)}
     <div class="proj-win-header" style="background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(239,68,68,0.12))">
       <span>📈</span>
     </div>
-    <div class="win-tag">Financial Analytics · Big Data</div>
+    <div class="win-tag">Financial Analytics</div>
     <div class="win-h1">Macro Regimes & Portfolio Optimization</div>
-    <p class="win-p">Two concurrent analytics projects: a macroeconomic regime-based stock market analysis and a cloud-native portfolio optimizer built on AWS with 10GB+ financial data.</p>
     <div class="win-divider"></div>
-    <div class="win-label">Project A — Macro Regime Analysis</div>
+    <div class="win-label">Summary</div>
     <ul class="win-bullets">
-      <li>Clustering time periods with similar economic conditions (Inflation, Liquidity, GDP) to identify macro regimes</li>
-      <li>Measuring regime impact on equity factor performance: Value vs Growth and Small vs Large cap return differentials</li>
+      <li>Conducting macroeconomic regime-based analysis by clustering time periods with similar economic conditions (Inflation, liquidity, GDP)</li>
+      <li>Measuring regime impact on equity factor performance by analysing return differentials between Value-Growth and Small-Large portfolios</li>
     </ul>
-    <div class="win-label" style="margin-top:14px">Project B — Portfolio Optimization (AWS)</div>
-    <ul class="win-bullets">
-      <li>Building cloud-native portfolio optimizer on AWS using PySpark, S3, and Lambda with 10GB+ financial data</li>
-      <li>Implementing PCA and K-Means clustering for portfolio construction and factor analysis</li>
-    </ul>
+    <div style="margin-top:8px">
+      <button
+        type="button"
+        class="win-btn"
+        onclick="openUrlInNewTab('https://drive.google.com/file/d/1Jz4S0AGGmHu4Ubokxe4peVYLk0KFQbgI/view?usp=sharing')"
+      >Click on me to see the files</button>
+    </div>
     <div class="win-label" style="margin-top:14px">Tools & Methods</div>
     <div class="tag-row">
-      <span class="win-tag-pill">Python / PySpark</span>
-      <span class="win-tag-pill">AWS S3 & Lambda</span>
       <span class="win-tag-pill">PCA & K-Means</span>
       <span class="win-tag-pill">Financial Derivatives</span>
       <span class="win-tag-pill">SQL</span>
@@ -1063,6 +1127,45 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape') closeCtx();
 });
+
+// ── PERSONAL PAGE VIEW COUNTER (client-side; GitHub Pages friendly) ──
+// How it works:
+// - Counter is hidden by default.
+// - If you open the page with the secret query parameter `?vc=<TOKEN>`,
+//   the browser stores an "authorized" flag in localStorage.
+// - After that, each page load increments and shows your personal view count.
+(function initPersonalPageViewCounter(){
+  const elId = 'view-counter';
+  const secretParam = 'vc';
+  // Replace this token if you want. Keep it secret.
+  const secretToken = 'PT_VIEW_COUNTER_SHOW_ME_7f9c2a';
+  const storageKeyPrefix = 'pt_personal_views_';
+
+  const el = document.getElementById(elId);
+  if(!el) return;
+
+  // Use the current path as the per-page key.
+  const pageKey = location.pathname || 'root';
+  const countKey = storageKeyPrefix + pageKey + '_count';
+  const authKey  = storageKeyPrefix + pageKey + '_authorized';
+
+  // Authorize either if already authorized on this device, or if the secret token matches.
+  const params = new URLSearchParams(location.search);
+  const tokenFromUrl = params.get(secretParam);
+  const alreadyAuthorized = localStorage.getItem(authKey) === '1';
+  const authorizedNow = alreadyAuthorized || (!!tokenFromUrl && tokenFromUrl === secretToken);
+
+  if(!authorizedNow) return; // Do not show or increment for other visitors.
+
+  localStorage.setItem(authKey, '1');
+
+  const current = Number.parseInt(localStorage.getItem(countKey) || '0', 10);
+  const next = current + 1;
+  localStorage.setItem(countKey, String(next));
+
+  el.style.display = 'block';
+  el.textContent = 'Views: ' + next;
+})();
 
 </script>
 </body>
