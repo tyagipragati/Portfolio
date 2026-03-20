@@ -361,8 +361,15 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--font)}
   /* Keep the sticky note from feeling too large */
   .sticky-note{
     width:170px;
+    max-width:calc(100vw - 24px);
     font-size:11px;
     padding:12px 14px;
+    /* Override the inline `top/right` so it doesn't cover the icon grid */
+    top:auto !important;
+    bottom:64px !important; /* sit above the taskbar */
+    right:12px !important;
+    left:auto !important;
+    transform:rotate(-1deg);
   }
 
   /* Force all windows to fit inside the viewport */
