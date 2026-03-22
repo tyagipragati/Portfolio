@@ -1,1179 +1,1499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Pragati Tyagi — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --glass:rgba(255,255,255,0.12);
-  --glass-border:rgba(255,255,255,0.25);
-  --glass-strong:rgba(255,255,255,0.18);
-  --taskbar:rgba(20,20,30,0.75);
-  --text:#fff;
-  --text-dim:rgba(255,255,255,0.7);
-  --text-muted:rgba(255,255,255,0.45);
-  --accent:#60AEFF;
-  --accent2:#a78bfa;
-  --win-bg:rgba(30,30,46,0.92);
-  --win-border:rgba(255,255,255,0.15);
-  --win-title:rgba(20,20,36,0.95);
-  --font:'DM Sans',system-ui,sans-serif;
-  --mono:'DM Mono',monospace;
-  --radius:12px;
-}
-html,body{width:100%;height:100%;overflow:hidden;font-family:var(--font)}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pragati Tyagi | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f3fc;
+      --surface: #ffffff;
+      --text: #25243a;
+      --muted: #6d6a87;
+      --border: #ebe6f4;
+      --shadow: 0 14px 32px rgba(36, 29, 72, 0.1);
+      --pink: #f9d9e7;
+      --blue: #cde9f4;
+      --mint: #c9eee0;
+      --lavender: #ddd3f8;
+      --yellow: #fde7a5;
+      --footer: #2d3150;
+    }
 
-/* ── DESKTOP ── */
-#desktop{
-  width:100vw;height:100vh;height:100dvh;
-  background:linear-gradient(135deg,#0f0c29 0%,#1a1a3e 35%,#24243e 60%,#0d1b4b 100%);
-  position:relative;overflow:hidden;
-  display:flex;flex-direction:column;
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
 
-.wp-shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.18;pointer-events:none}
-.wp1{width:600px;height:600px;background:#4f46e5;top:-100px;left:-100px}
-.wp2{width:500px;height:500px;background:#7c3aed;bottom:-80px;right:100px}
-.wp3{width:300px;height:300px;background:#2563eb;top:40%;left:55%}
-.wp4{width:200px;height:200px;background:#0ea5e9;top:20%;right:10%}
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 42px 20px 0;
+    }
 
-/* ── DESKTOP ICONS AREA ── */
-#icon-area{
-  flex:1;
-  padding:32px 28px;
-  display:grid;
-  grid-template-columns:repeat(auto-fill,88px);
-  grid-auto-rows:100px;
-  gap:8px;
-  align-content:start;
-  position:relative;z-index:1;
-}
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
 
-/* ── DESKTOP ICON ── */
-.desktop-icon{
-  display:flex;flex-direction:column;align-items:center;
-  gap:6px;padding:8px 4px;cursor:pointer;border-radius:8px;
-  transition:background 0.15s;user-select:none;
-  position:relative;
-}
-.desktop-icon:hover{background:rgba(255,255,255,0.1)}
-.desktop-icon:active{background:rgba(255,255,255,0.18);transform:scale(0.96)}
-.desktop-icon.selected{background:rgba(96,174,255,0.18);outline:1px solid rgba(96,174,255,0.4)}
-.desktop-icon.alumni-icon:hover{background:rgba(96,174,255,0.18);outline:1px solid rgba(96,174,255,0.4)}
-.icon-img{
-  width:56px;height:56px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:28px;position:relative;
-  box-shadow:0 4px 16px rgba(0,0,0,0.3);
-  transition:transform 0.15s;
-}
-.desktop-icon:hover .icon-img{transform:scale(1.06) translateY(-2px)}
-.icon-label{
-  font-size:11.5px;font-weight:400;color:#fff;
-  text-align:center;line-height:1.3;
-  text-shadow:0 1px 4px rgba(0,0,0,0.8);
-  max-width:80px;word-break:break-word;
-}
+    .avatar {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: linear-gradient(130deg, #9acbea, #bab6df);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
 
-.ic-blue{background:linear-gradient(145deg,#3b82f6,#1d4ed8)}
-.ic-purple{background:linear-gradient(145deg,#8b5cf6,#5b21b6)}
-.ic-teal{background:linear-gradient(145deg,#06b6d4,#0e7490)}
-.ic-green{background:linear-gradient(145deg,#10b981,#047857)}
-.ic-orange{background:linear-gradient(145deg,#f59e0b,#b45309)}
-.ic-pink{background:linear-gradient(145deg,#ec4899,#9d174d)}
-.ic-slate{background:linear-gradient(145deg,#64748b,#334155)}
-.ic-red{background:linear-gradient(145deg,#ef4444,#991b1b)}
-.ic-folder{background:linear-gradient(145deg,#fbbf24,#d97706)}
-.ic-indigo{background:linear-gradient(145deg,#6366f1,#4338ca)}
+    h1 {
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
 
-/* ── STICKY NOTE ── */
-.sticky-note{
-  position:absolute;
-  width:200px;
-  background:linear-gradient(145deg,#fef08a,#fde047);
-  border-radius:2px;
-  box-shadow:3px 4px 16px rgba(0,0,0,0.35);
-  padding:14px 16px;
-  font-family:var(--font);
-  color:#1c1917;
-  font-size:12px;
-  line-height:1.6;
-  z-index:5;
-  cursor:move;
-  user-select:none;
-  transform:rotate(-1.5deg);
-}
-.sticky-note .sticky-header{
-  font-size:11px;font-weight:600;letter-spacing:0.06em;
-  text-transform:uppercase;color:#78350f;
-  margin-bottom:8px;padding-bottom:6px;
-  border-bottom:1px solid rgba(120,53,15,0.2);
-}
-.sticky-note p{font-size:12px;color:#292524;line-height:1.65}
+    .subtitle {
+      font-size: clamp(1.1rem, 2.8vw, 2rem);
+      color: #4e4a64;
+      margin-bottom: 14px;
+    }
 
-/* ── TASKBAR ── */
-#taskbar{
-  height:48px;
-  background:var(--taskbar);
-  backdrop-filter:blur(40px);
-  -webkit-backdrop-filter:blur(40px);
-  border-top:1px solid rgba(255,255,255,0.08);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 16px;
-  position:relative;z-index:100;
-  flex-shrink:0;
-}
-.taskbar-start{display:flex;align-items:center;gap:6px;}
-.taskbar-center{
-  position:absolute;left:50%;transform:translateX(-50%);
-  display:flex;align-items:center;gap:4px;
-}
-.tb-btn{
-  width:36px;height:36px;border-radius:6px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:background 0.15s;
-  position:relative;font-size:16px;
-}
-.tb-btn:hover{background:rgba(255,255,255,0.1)}
-.tb-btn svg{width:18px;height:18px;fill:rgba(255,255,255,0.85)}
-.tb-btn.active::after{
-  content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);
-  width:14px;height:3px;background:var(--accent);border-radius:2px;
-}
-.taskbar-right{display:flex;align-items:center;gap:10px;}
-.tb-clock{
-  font-size:12px;color:rgba(255,255,255,0.85);
-  text-align:right;line-height:1.4;cursor:default;
-}
-.tb-name{font-size:12px;color:var(--text-dim);font-weight:500;letter-spacing:0.02em;}
+    .open-pill {
+      border-radius: 999px;
+      padding: 8px 20px;
+      border: 1px solid #f1c5d8;
+      background: #fddfed;
+      color: #7f4d66;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
 
-/* ── WINDOW ── */
-.window{
-  position:fixed;
-  background:var(--win-bg);
-  backdrop-filter:blur(40px);
-  -webkit-backdrop-filter:blur(40px);
-  border:1px solid var(--win-border);
-  border-radius:var(--radius);
-  box-shadow:0 32px 80px rgba(0,0,0,0.6),0 0 0 0.5px rgba(255,255,255,0.05);
-  overflow:hidden;
-  display:flex;flex-direction:column;
-  max-height:calc(100vh - 70px);
-  max-height:calc(100dvh - 70px);
-  max-width:calc(100vw - 40px);
-  min-width:360px;min-height:200px;
-  z-index:200;
-  animation:winOpen 0.18s cubic-bezier(0.34,1.56,0.64,1) both;
-}
-@keyframes winOpen{from{opacity:0;transform:scale(0.92) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.window.closing{animation:winClose 0.14s ease forwards}
-@keyframes winClose{to{opacity:0;transform:scale(0.95)}}
+    .chip-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-.win-titlebar{
-  height:40px;
-  background:var(--win-title);
-  display:flex;align-items:center;
-  padding:0 12px;gap:10px;
-  flex-shrink:0;
-  cursor:move;
-  border-bottom:1px solid rgba(255,255,255,0.07);
-  user-select:none;
-}
-.win-controls{display:flex;gap:6px;margin-right:4px}
-.win-ctrl{
-  width:12px;height:12px;border-radius:50%;cursor:pointer;
-  border:none;outline:none;transition:filter 0.15s;
-}
-.win-ctrl:hover{filter:brightness(1.3)}
-.win-close{background:#ff5f57}
-.win-min{background:#febc2e}
-.win-max{background:#28c840}
-.win-title-text{
-  font-size:12.5px;font-weight:500;color:rgba(255,255,255,0.85);
-  flex:1;text-align:center;margin-right:52px;
-}
-.win-body{flex:1;overflow-y:auto;min-height:0;padding:24px 28px}
-.win-body::-webkit-scrollbar{width:4px}
-.win-body::-webkit-scrollbar-track{background:transparent}
-.win-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:2px}
+    .chip {
+      border-radius: 999px;
+      border: 1px solid #ece8f4;
+      background: #fff;
+      padding: 8px 14px;
+      color: #514d6a;
+      font-size: 0.87rem;
+      box-shadow: 0 5px 10px rgba(31, 24, 66, 0.05);
+    }
 
-/* ── WINDOW CONTENT STYLES ── */
-.win-tag{
-  font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--accent);font-weight:600;margin-bottom:10px;font-family:var(--mono);
-}
-.win-h1{font-size:26px;font-weight:600;color:#fff;line-height:1.2;margin-bottom:12px;}
-.win-p{font-size:13.5px;color:rgba(255,255,255,0.7);line-height:1.75;margin-bottom:14px}
-.win-divider{height:1px;background:rgba(255,255,255,0.08);margin:18px 0}
-.win-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;font-family:var(--mono);}
-.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.win-tag-pill{
-  font-size:11px;padding:4px 12px;border-radius:20px;
-  background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8);
-  border:1px solid rgba(255,255,255,0.12);letter-spacing:0.04em;
-}
-.win-btn{
-  display:inline-block;margin-top:8px;padding:9px 20px;
-  background:var(--accent);color:#fff;font-size:12.5px;
-  font-family:var(--font);font-weight:500;border-radius:6px;
-  text-decoration:none;cursor:pointer;border:none;
-  transition:background 0.2s,transform 0.15s;
-}
-.win-btn:hover{background:#3b9eff;transform:translateY(-1px)}
-.win-btn-ghost{
-  display:inline-block;margin-top:8px;margin-left:10px;
-  padding:9px 20px;background:rgba(255,255,255,0.08);
-  color:rgba(255,255,255,0.8);font-size:12.5px;
-  font-family:var(--font);font-weight:400;border-radius:6px;
-  text-decoration:none;cursor:pointer;border:1px solid rgba(255,255,255,0.12);
-  transition:background 0.2s;
-}
-.win-btn-ghost:hover{background:rgba(255,255,255,0.14)}
+    section {
+      padding: 34px 0 44px;
+    }
 
-/* Skills grid */
-.skills-win-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
-.skill-win-block{
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
-  border-radius:8px;padding:14px 16px;
-}
-.skill-win-block h4{font-size:12px;font-weight:600;color:var(--accent);margin-bottom:10px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--mono);}
-.skill-win-block ul{list-style:none;display:flex;flex-direction:column;gap:7px}
-.skill-win-block li{font-size:12.5px;color:rgba(255,255,255,0.72);display:flex;align-items:center;gap:8px}
-.skill-win-block li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;opacity:0.7}
+    h2 {
+      text-align: center;
+      margin-bottom: 22px;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
 
-/* Contact items */
-.contact-win-item{
-  display:flex;align-items:center;gap:14px;
-  padding:13px 16px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:8px;margin-bottom:10px;
-  text-decoration:none;
-  transition:background 0.2s;
-  cursor:pointer;
-}
-.contact-win-item:hover{background:rgba(255,255,255,0.1)}
-.contact-win-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.contact-win-label{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;font-family:var(--mono);}
-.contact-win-value{font-size:13px;color:rgba(255,255,255,0.85);margin-top:2px}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
 
-/* Project header area */
-.proj-win-header{
-  width:100%;height:140px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:20px;font-size:52px;
-  overflow:hidden;position:relative;
-  border:1px solid rgba(255,255,255,0.08);
-}
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 
-/* Impact stat row */
-.impact-row{display:flex;gap:12px;margin:14px 0}
-.impact-stat{
-  flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
-  border-radius:8px;padding:12px;text-align:center;
-}
-.impact-stat .stat-val{font-size:20px;font-weight:700;color:var(--accent);font-family:var(--mono);}
-.impact-stat .stat-label{font-size:10px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.4;}
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      min-height: 164px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
 
-/* bullet list in projects */
-.win-bullets{list-style:none;margin:0 0 14px;display:flex;flex-direction:column;gap:8px}
-.win-bullets li{font-size:12.5px;color:rgba(255,255,255,0.68);display:flex;align-items:flex-start;gap:10px;line-height:1.6}
-.win-bullets li::before{content:'→';color:var(--accent);flex-shrink:0;font-size:11px;margin-top:2px;font-family:var(--mono);}
+    .card:hover { transform: translateY(-3px); }
 
-/* About headshot */
-.about-headshot{
-  width:80px;height:80px;border-radius:50%;
-  background:linear-gradient(135deg,#4f46e5,#7c3aed);
-  display:flex;align-items:center;justify-content:center;
-  font-size:30px;margin-bottom:16px;
-  border:2px solid rgba(255,255,255,0.15);
-}
-.about-meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.about-meta-chip{
-  font-size:11px;padding:5px 14px;border-radius:20px;
-  background:rgba(96,174,255,0.12);color:var(--accent);
-  border:1px solid rgba(96,174,255,0.2);
-}
+    .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+    }
 
-/* Resume window */
-.resume-section{margin-bottom:20px}
-.resume-section h3{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.07);font-family:var(--mono);}
-.resume-item{margin-bottom:12px;padding-left:0}
-.resume-item .ri-title{font-size:13px;font-weight:500;color:#fff}
-.resume-item .ri-sub{font-size:11.5px;color:rgba(255,255,255,0.45);margin-top:2px}
-.resume-item .ri-detail{font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;line-height:1.5}
+    .i-blue { background: var(--blue); }
+    .i-lavender { background: var(--lavender); }
+    .i-pink { background: var(--pink); }
+    .i-mint { background: var(--mint); }
+    .i-yellow { background: #ffe8bf; }
 
-/* Right-click menu */
-#ctx-menu{
-  position:fixed;z-index:9999;
-  background:rgba(28,28,42,0.95);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:8px;padding:6px;
-  box-shadow:0 8px 32px rgba(0,0,0,0.5);
-  min-width:180px;
-  display:none;
-}
-.ctx-item{
-  padding:7px 14px;border-radius:5px;
-  font-size:12.5px;color:rgba(255,255,255,0.82);
-  cursor:pointer;transition:background 0.12s;
-  display:flex;align-items:center;gap:10px;
-}
-.ctx-item:hover{background:rgba(255,255,255,0.1)}
-.ctx-sep{height:1px;background:rgba(255,255,255,0.08);margin:4px 2px}
+    .card-title { font-size: 1.9rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.015em; }
+    .card-sub { color: var(--muted); font-size: 0.96rem; }
 
-#clock{font-variant-numeric:tabular-nums}
-#view-counter{
-  display:none;
-  font-size:10px;
-  color:rgba(255,255,255,0.55);
-  text-align:right;
-  line-height:1.2;
-  font-family:var(--mono);
-  margin-top:2px;
-}
+    .footer {
+      margin-top: 30px;
+      background: var(--footer);
+      color: #edf0ff;
+      text-align: center;
+      padding: 26px 20px 18px;
+    }
 
-/* ── MOBILE RESPONSIVE ── */
-@media (max-width: 600px){
-  /* Make the icon grid usable on phones */
-  #icon-area{
-    padding:18px 12px;
-    grid-template-columns:repeat(auto-fill,minmax(70px,1fr));
-    grid-auto-rows:90px;
-    gap:6px;
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
-  }
-  .desktop-icon{gap:5px;padding:6px 2px}
-  .icon-img{
-    width:48px;height:48px;border-radius:10px;
-    font-size:22px;
-  }
-  .icon-label{
-    font-size:10px;
-    max-width:64px;
-  }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
 
-  /* Keep the sticky note from feeling too large */
-  .sticky-note{
-    width:170px;
-    max-width:calc(100vw - 24px);
-    font-size:11px;
-    padding:12px 14px;
-    /* Override the inline `top/right` so it doesn't cover the icon grid */
-    top:auto !important;
-    bottom:64px !important; /* sit above the taskbar */
-    right:12px !important;
-    left:auto !important;
-    transform:rotate(-1deg);
-  }
+    .footer a {
+      color: #dbe2ff;
+      text-decoration: none;
+      border: 1px solid rgba(219, 226, 255, 0.33);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+    }
 
-  /* Force all windows to fit inside the viewport */
-  .window{
-    left:10px !important;
-    right:10px !important;
-    top:56px !important;
-    width:auto !important;
-    min-width:0 !important;
-    max-width:none !important;
-    max-height:calc(100dvh - 56px - 8px);
-  }
-  .win-titlebar{height:36px;padding:0 10px}
-  .win-title-text{font-size:11px;margin-right:44px}
-  .win-body{padding:16px 14px}
-  .win-h1{font-size:20px}
-  .win-p{font-size:12.8px}
+    .sticky-note {
+      position: fixed;
+      right: 22px;
+      top: 54%;
+      transform: translateY(-50%) rotate(-1.2deg);
+      z-index: 20;
+      width: 205px;
+      border: 1px solid #efc86d;
+      border-radius: 4px;
+      background: linear-gradient(145deg, #ffe7aa, #ffd785);
+      color: #3e3316;
+      box-shadow: 0 18px 28px rgba(83, 56, 5, 0.28), 0 3px 0 rgba(120, 84, 13, 0.2);
+      padding: 12px 13px;
+      transform-style: preserve-3d;
+    }
 
-  .skills-win-grid{grid-template-columns:1fr}
-  .impact-row{flex-direction:column}
-  .proj-win-header{height:110px;font-size:42px;margin-bottom:14px}
-}
+    .sticky-note::before {
+      content: "";
+      position: absolute;
+      width: 46px;
+      height: 16px;
+      top: -10px;
+      right: 22px;
+      background: linear-gradient(to bottom, #ffd98e, #f4bb57);
+      border-radius: 4px 4px 0 0;
+      box-shadow: 0 2px 0 rgba(117, 78, 15, 0.22);
+      transform: rotate(2deg);
+    }
 
-@media (max-width: 420px){
-  #icon-area{grid-auto-rows:84px}
-  .proj-win-header{font-size:38px}
-}
-</style>
+    .sticky-note::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 38%);
+      pointer-events: none;
+    }
+
+    .sticky-note h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .sticky-note ul {
+      list-style: none;
+      display: grid;
+      gap: 3px;
+      font-size: 0.84rem;
+    }
+
+    .sticky-note li::before {
+      content: "✦ ";
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(39, 32, 68, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 50;
+    }
+
+    .modal.show { display: flex; }
+
+    .modal-card {
+      width: min(980px, 100%);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 26px 40px rgba(25, 19, 51, 0.3);
+      overflow: hidden;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid #f0edf7;
+    }
+
+    .modal-header h3 {
+      font-size: 2.15rem;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
+
+    .close {
+      border: 0;
+      background: transparent;
+      font-size: 1.85rem;
+      line-height: 1;
+      color: #2f2d41;
+      cursor: pointer;
+    }
+
+    .modal-body {
+      padding: 16px 20px 18px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #b8e6e5 #f5f4fb;
+    }
+
+    .scroll-body {
+      overflow-y: scroll;
+    }
+
+    .modal-body::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .modal-body::-webkit-scrollbar-thumb {
+      background: #b8e6e5;
+      border-radius: 999px;
+    }
+
+    .modal-body::-webkit-scrollbar-track {
+      background: #f5f4fb;
+    }
+
+    .soft-box {
+      background: #f7f8fb;
+      border: 1px solid #f0f2f8;
+      border-radius: 12px;
+      padding: 16px;
+      color: #3e3b53;
+      margin-bottom: 14px;
+      font-size: 1.08rem;
+    }
+
+    .modal-body p {
+      color: #55516e;
+      margin-bottom: 10px;
+      font-size: 1.02rem;
+    }
+
+    .about-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .meta-card {
+      border: 1px solid #efebf6;
+      border-radius: 10px;
+      padding: 11px 10px;
+      background: #fff;
+      color: #595674;
+      font-size: 0.9rem;
+    }
+
+    .resume-box {
+      background: #f5fafc;
+      border: 1px solid #eaf2f7;
+      border-radius: 12px;
+      padding: 14px;
+      color: #4f4a67;
+      font-size: 1.03rem;
+    }
+
+    .actions {
+      margin-top: 12px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid #dce4ea;
+      color: #4a495f;
+      background: #fff;
+    }
+
+    .btn.primary {
+      border-color: #9ad6de;
+      background: #9ed9df;
+      color: #fff;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .meta-pill {
+      background: #fff;
+      border: 1px solid #ece8f3;
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 0.86rem;
+      color: #5a5773;
+    }
+
+    .project-highlight {
+      background: #f9f3ea;
+      border: 1px solid #f0e3d1;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .project-highlight h4 {
+      font-size: 2rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .stat-card {
+      border: 1px solid #efecf7;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .stat-card .value {
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 5px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-card:nth-child(1) .value { color: #9ad7d7; }
+    .stat-card:nth-child(2) .value { color: #b8a8c7; }
+    .stat-card:nth-child(3) .value { color: #eba8bd; }
+
+    .stat-card .label {
+      font-size: 0.83rem;
+      color: #6d6a86;
+      line-height: 1.35;
+    }
+
+    .modal-subtitle {
+      font-weight: 700;
+      margin: 12px 0 8px;
+      font-size: 1.45rem;
+      letter-spacing: -0.01em;
+    }
+
+    .dot-list {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+      color: #55516d;
+      margin-bottom: 12px;
+    }
+
+    .dot-list li::before {
+      content: ". ";
+      font-weight: 800;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      border-radius: 999px;
+      border: 1px solid #efe8de;
+      background: #f8f3ed;
+      color: #605a72;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .skills-section {
+      margin-bottom: 14px;
+    }
+
+    .skills-heading {
+      font-size: 1.9rem;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .skills-category {
+      margin-top: 10px;
+    }
+
+    .skills-category h4 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      padding-left: 12px;
+      border-left: 4px solid #8dd2d2;
+      line-height: 1.2;
+    }
+
+    .skills-category.product h4 { border-left-color: #f3bfd4; }
+    .skills-category.strategy h4 { border-left-color: #8dd2d2; }
+    .skills-category.tools h4 { border-left-color: #b5a8d4; }
+    .skills-category.soft h4 { border-left-color: #9edac6; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .skills-grid span {
+      border: 1px solid #efecf7;
+      border-radius: 8px;
+      background: #fff;
+      color: #5c5876;
+      font-size: 0.92rem;
+      padding: 8px 10px;
+    }
+
+    /* Screenshot-matching look for Skills modal */
+    .skills-modal-card {
+      width: min(760px, 100%);
+      max-height: 72vh;
+      border-radius: 16px;
+    }
+
+    .skills-modal-header {
+      padding: 14px 20px;
+    }
+
+    .skills-modal-header h3 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .skills-modal-body {
+      padding: 14px 18px 16px;
+    }
+
+    .skills-modal-body .skills-category {
+      margin-top: 12px;
+    }
+
+    .skills-modal-body .skills-category h4 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      border-left-width: 3px;
+      padding-left: 10px;
+    }
+
+    .skills-modal-body .skills-grid {
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .skills-modal-body .skills-grid span {
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #615d79;
+      border-color: #f0edf7;
+    }
+
+    .stacked-projects {
+      display: grid;
+      gap: 14px;
+    }
+
+    .project-card {
+      border: 1px solid #efeaf6;
+      background: #fdfdff;
+      border-radius: 14px;
+      box-shadow: 0 6px 14px rgba(38, 29, 72, 0.07);
+      padding: 14px;
+    }
+
+    .project-card .head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .project-card .icon-mini {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .icon-yellow { background: #fff1a8; }
+    .icon-pink { background: #ffd5df; }
+    .icon-violet { background: #d5d3ff; }
+
+    .project-card h5 {
+      font-size: 1.8rem;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .project-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #666280;
+    }
+
+    .project-card .hl {
+      margin-top: 8px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .mini-dot-list {
+      list-style: none;
+      display: grid;
+      gap: 5px;
+      margin-bottom: 9px;
+      color: #55516d;
+      font-size: 0.93rem;
+    }
+
+    .mini-dot-list li::before {
+      content: ". ";
+      font-weight: 800;
+    }
+
+    .chips-yellow .tag { background: #f9f6dc; border-color: #f3edc4; }
+    .chips-pink .tag { background: #fce3ec; border-color: #f5cad9; }
+    .chips-blue .tag { background: #e2ecff; border-color: #c9dbff; }
+
+    /* Work Experience: two centered tiles */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 320px));
+      justify-content: center;
+      gap: 20px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Contact popup — matches “Get in Touch” screenshot */
+    .contact-modal-card {
+      width: min(760px, 96vw);
+      max-width: 100%;
+      max-height: 88vh;
+      border-radius: 22px;
+    }
+
+    .contact-modal-header {
+      padding: 18px 24px;
+    }
+
+    .contact-modal-header h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-modal-body {
+      padding: 0 24px 26px;
+    }
+
+    .contact-mint-panel {
+      background: linear-gradient(180deg, #e8f6f2 0%, #e4f3f6 100%);
+      border: 1px solid #d4ebe4;
+      border-radius: 16px;
+      padding: 22px 22px 20px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    }
+
+    .contact-intro {
+      color: #4a4a55;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0 0 18px;
+      font-weight: 400;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+      width: 100%;
+      border: 1px solid #ececf0;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(30, 40, 50, 0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(30, 40, 50, 0.1);
+    }
+
+    .contact-item-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item-icon svg {
+      display: block;
+    }
+
+    .contact-icon-mail { background: #7ecfc4; }
+    .contact-icon-phone { background: #ffb4b8; }
+    .contact-icon-in { background: #c4b5fd; }
+
+    .contact-li-mark {
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      font-family: "DM Sans", system-ui, sans-serif;
+    }
+
+    .contact-item-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .contact-item-text .label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1f1f24;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-item-text .value {
+      font-size: 0.98rem;
+      color: #5c5c68;
+      font-weight: 400;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        padding: 30px 18px 0;
+      }
+
+      .hero {
+        min-height: 72vh;
+      }
+
+      .grid,
+      .grid.three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stat-row {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .modal {
+        padding: 14px;
+      }
+
+      .modal-card {
+        width: min(920px, 100%);
+        max-height: 90vh;
+      }
+
+      .project-card h5 {
+        font-size: 1.45rem;
+      }
+
+      .sticky-note {
+        top: auto;
+        bottom: 16px;
+        right: 14px;
+        transform: rotate(-1deg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 26px 0 34px;
+      }
+
+      .hero {
+        min-height: 64vh;
+      }
+
+      .avatar {
+        width: 88px;
+        height: 88px;
+        font-size: 1.7rem;
+      }
+
+      .chip-row {
+        gap: 8px;
+      }
+
+      .chip {
+        font-size: 0.8rem;
+        padding: 7px 12px;
+      }
+
+      .card {
+        min-height: 146px;
+        padding: 16px 12px;
+      }
+
+      .card-title {
+        font-size: 1.28rem;
+      }
+
+      .card-sub {
+        font-size: 0.88rem;
+      }
+
+      .icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.15rem;
+      }
+
+      .modal {
+        padding: 10px;
+      }
+
+      .modal-card {
+        width: 100%;
+        max-height: calc(100dvh - 20px);
+        border-radius: 14px;
+      }
+
+      .modal-header {
+        padding: 12px 14px;
+      }
+
+      .modal-header h3 {
+        font-size: 1.45rem;
+      }
+
+      .modal-body {
+        padding: 12px 14px 14px;
+      }
+
+      .project-highlight h4 {
+        font-size: 1.35rem;
+      }
+
+      .modal-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .tag {
+        font-size: 0.76rem;
+        padding: 5px 8px;
+      }
+
+      .skills-modal-card {
+        width: 100%;
+        max-height: calc(100dvh - 20px);
+      }
+
+      .skills-modal-header h3 {
+        font-size: 1.5rem;
+      }
+
+      .skills-modal-body .skills-category h4 {
+        font-size: 1.2rem;
+      }
+
+      .skills-grid span {
+        min-height: 34px;
+        font-size: 0.83rem;
+      }
+
+      .project-card {
+        padding: 12px;
+      }
+
+      .project-card h5 {
+        font-size: 1.22rem;
+      }
+
+      .actions {
+        gap: 8px;
+      }
+
+      .btn {
+        padding: 8px 12px;
+        font-size: 0.82rem;
+      }
+
+      .sticky-note {
+        width: 150px;
+        padding: 9px 10px;
+        right: 8px;
+        bottom: 8px;
+      }
+
+      .sticky-note h4 {
+        font-size: 0.8rem;
+      }
+
+      .sticky-note ul {
+        font-size: 0.72rem;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        padding: 18px 12px 0;
+      }
+
+      .grid,
+      .grid.three,
+      .skills-grid,
+      .about-meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+
+      h2 {
+        margin-bottom: 16px;
+      }
+
+      .open-pill {
+        font-size: 0.82rem;
+        padding: 7px 14px;
+      }
+
+      .modal-header h3,
+      .skills-modal-header h3 {
+        font-size: 1.28rem;
+      }
+
+      .close {
+        font-size: 1.5rem;
+      }
+
+      .project-meta {
+        gap: 6px;
+      }
+
+      .meta-pill {
+        font-size: 0.74rem;
+        padding: 5px 8px;
+      }
+
+      .sticky-note {
+        width: 132px;
+        opacity: 0.95;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<div id="desktop" oncontextmenu="showCtxMenu(event)">
-  <div class="wp-shape wp1"></div>
-  <div class="wp-shape wp2"></div>
-  <div class="wp-shape wp3"></div>
-  <div class="wp-shape wp4"></div>
-
-  <!-- ICON AREA -->
-  <!-- To add a Google Drive link to any icon, set data-link="YOUR_URL" on that .desktop-icon div -->
-  <div id="icon-area">
-    <div class="desktop-icon" data-win="about" data-link="">
-      <div class="icon-img ic-purple">👤</div>
-      <span class="icon-label">About Me</span>
-    </div>
-    <div class="desktop-icon" data-win="proj1" data-link="">
-      <div class="icon-img ic-blue">📊</div>
-      <span class="icon-label">LenDenClub</span>
-    </div>
-    <div class="desktop-icon" data-win="proj2" data-link="https://drive.google.com/drive/folders/1iZkqM6FgdgIshsWFfIJlbjsRifiIB8ni?usp=sharing">
-      <div class="icon-img ic-pink">🚨</div>
-      <span class="icon-label">Raksha112</span>
-    </div>
-    <div class="desktop-icon" data-win="proj3" data-link="">
-      <div class="icon-img ic-teal">💅</div>
-      <span class="icon-label">Salon Franchise</span>
-    </div>
-    <div class="desktop-icon" data-win="proj4" data-link="">
-      <div class="icon-img ic-orange">📈</div>
-      <span class="icon-label">Stock Market Behavior Analysis</span>
-    </div>
-    <div class="desktop-icon" data-win="skills" data-link="">
-      <div class="icon-img ic-folder">📁</div>
-      <span class="icon-label">Skills</span>
-    </div>
-    <div class="desktop-icon" data-win="resume" data-link="https://drive.google.com/file/d/1Kmi3bTtdnxp0aoz9FcBcUIlGSHfHt819/view?usp=drive_link">
-      <div class="icon-img ic-green">📄</div>
-      <span class="icon-label">Resume.pdf</span>
-    </div>
-    <div class="desktop-icon alumni-icon" data-win="alumni" data-link="https://drive.google.com/drive/folders/14G4SKkLEPeSbHgIe4F6xlUxesPI0yTw5?usp=sharing">
-      <div class="icon-img ic-indigo">🎓</div>
-      <span class="icon-label">Alumni Connect App Live Project</span>
-    </div>
-    <div class="desktop-icon" data-win="guesstimate" data-link="">
-      <div class="icon-img ic-orange">🧮</div>
-      <span class="icon-label">Guesstimate</span>
-    </div>
-    <div class="desktop-icon" data-win="airindia" data-link="">
-      <div class="icon-img ic-teal">✈️</div>
-      <span class="icon-label">Air India-Vistara Merger Analysis</span>
-    </div>
-    <div class="desktop-icon" data-win="contact" data-link="">
-      <div class="icon-img ic-slate">✉️</div>
-      <span class="icon-label">Contact</span>
-    </div>
-  </div>
-
-  <!-- STICKY NOTE -->
-  <div class="sticky-note" id="sticky" style="right:32px;top:64px">
-    <div class="sticky-header">📌 Pragati Tyagi</div>
-    <p>Open to roles in:<br>· Product Manager<br>· Product Analyst<br>· Strategy Consulting<br>· Business Analyst</p>
-    <p style="margin-top:8px;font-size:11px;color:#78350f;opacity:0.7">Double-click icons to explore ↙</p>
-  </div>
-
-  <!-- TASKBAR -->
-  <div id="taskbar">
-    <div class="taskbar-start">
-      <div class="tb-btn" onclick="openWindow('about')" title="About Me">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+  <main class="container">
+    <section class="hero">
+      <div class="avatar">PT</div>
+      <h1>Pragati Tyagi</h1>
+      <p class="subtitle">Product · Strategy · Analytics</p>
+      <div class="open-pill">● Open to Work</div>
+      <div class="chip-row">
+        <span class="chip">Product Manager</span>
+        <span class="chip">Product Analyst</span>
+        <span class="chip">Strategy Consulting</span>
+        <span class="chip">Business Analyst</span>
       </div>
-      <span class="tb-name">Pragati Tyagi</span>
-    </div>
-    <div class="taskbar-right">
-      <div class="tb-clock">
-        <div id="clock">00:00</div>
-        <div id="date-display" style="font-size:10.5px;color:rgba(255,255,255,0.5)">Thu, Mar 19</div>
-        <div id="view-counter">Views: 0</div>
+    </section>
+
+    <section>
+      <h2>Get to Know Me</h2>
+      <div class="grid">
+        <article class="card" data-popup="about" tabindex="0">
+          <div class="icon i-blue">👤</div>
+          <div class="card-title">About Me</div>
+        </article>
+        <article class="card" data-popup="resume" tabindex="0">
+          <div class="icon i-lavender">📄</div>
+          <div class="card-title">Resume</div>
+        </article>
+        <article class="card" data-popup="skills" tabindex="0">
+          <div class="icon i-pink">🛠</div>
+          <div class="card-title">Skills</div>
+        </article>
+        <article class="card" data-popup="contact" tabindex="0">
+          <div class="icon i-mint">✉️</div>
+          <div class="card-title">Contact</div>
+        </article>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- RIGHT CLICK MENU -->
-<div id="ctx-menu">
-  <div class="ctx-item" onclick="closeCtx();openWindow('about')">👤 View About Me</div>
-  <div class="ctx-item" onclick="closeCtx();openWindow('contact')">✉️ Contact Pragati</div>
-  <div class="ctx-sep"></div>
-  <div class="ctx-item" onclick="closeCtx()">✨ Refresh</div>
-</div>
+    <section>
+      <h2>Work Experience</h2>
+      <div class="experience-grid">
+        <article class="card" data-popup="lendemclub" tabindex="0"><div class="icon i-yellow">📈</div><div class="card-title">Product Analyst</div><p class="card-sub">LenDenClub</p></article>
+        <article class="card" data-popup="securemeters" tabindex="0"><div class="icon i-mint">🔋</div><div class="card-title">Hardware Developer</div><p class="card-sub">Secure Meters</p></article>
+      </div>
+    </section>
 
-<!-- ═══════════════ WINDOWS ═══════════════ -->
+    <section>
+      <h2>Projects</h2>
+      <div class="grid three">
+        <article class="card" data-popup="productmanagement" tabindex="0"><div class="icon i-pink">💡</div><div class="card-title">Product Management</div><p class="card-sub">Raksha112 · Alumni Connect</p></article>
+        <article class="card" data-popup="consulting" tabindex="0"><div class="icon i-yellow">📘</div><div class="card-title">Consulting</div><p class="card-sub">Salon Expansion · Air India</p></article>
+        <article class="card" data-popup="businessanalytics" tabindex="0"><div class="icon i-blue">📊</div><div class="card-title">Business Analytics</div><p class="card-sub">Stock Analysis · Guesstimate</p></article>
+      </div>
+    </section>
+  </main>
 
-<!-- ABOUT ME WINDOW -->
-<div class="window" id="win-about" style="width:480px;top:80px;left:120px;display:none">
-  <div class="win-titlebar" id="tb-win-about">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('about')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('about')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('about')"></button>
+  <footer class="footer">
+    <p>Let's build something amazing together.</p>
+    <div class="footer-links">
+      <a href="mailto:pragatityagi040@gmail.com" aria-label="Email">✉</a>
+      <a href="https://linkedin.com/in/tyagi-pragati" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
     </div>
-    <span class="win-title-text">About Me</span>
-  </div>
-  <div class="win-body">
-    <div class="about-headshot">👤</div>
-    <div class="win-tag">Product · Strategy · Analytics</div>
-    <div class="win-h1">Pragati Tyagi</div>
-    <p class="win-p">Hi! I'm Pragati — an MBA (Business Analytics) candidate at BITS Pilani with a unique background bridging hardware engineering and product strategy. I've gone from building patented IoT modules at Secure Meters to driving B2B product adoption at LenDenClub and shaping global expansion strategy at Btribe.</p>
-    <p class="win-p">I thrive at the intersection of data, user empathy, and strategic thinking — turning ambiguity into clear, actionable product decisions. I'm actively seeking roles where I can drive meaningful impact.</p>
-    <div class="win-divider"></div>
-    <div class="win-label">Open to Roles</div>
-    <div class="tag-row">
-      <span class="win-tag-pill">Product Manager</span>
-      <span class="win-tag-pill">Product Analyst</span>
-      <span class="win-tag-pill">Strategy Consulting</span>
-      <span class="win-tag-pill">Business Analyst</span>
-    </div>
-    <div class="win-label">Details</div>
-    <div class="about-meta-row">
-      <span class="about-meta-chip">📍 India</span>
-      <span class="about-meta-chip">🎓 MBA Business Analytics</span>
-      <span class="about-meta-chip">🏫 BITS Pilani</span>
-      <span class="about-meta-chip">⚙️ B.Tech ECE</span>
-    </div>
-  </div>
-</div>
+    <p style="margin-top:8px;color:#b9c1e7;font-size:.85rem;">© <span id="year"></span> Pragati Tyagi. All rights reserved.</p>
+  </footer>
 
-<!-- PROJECT 1 — LenDenClub -->
-<div class="window" id="win-proj1" style="width:540px;top:100px;left:180px;display:none">
-  <div class="win-titlebar" id="tb-win-proj1">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('proj1')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('proj1')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('proj1')"></button>
-    </div>
-    <span class="win-title-text">Product Intern — LenDenClub</span>
-  </div>
-  <div class="win-body">
-    <div class="proj-win-header" style="background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(96,174,255,0.1))">
-      <span>📊</span>
-    </div>
-    <div class="win-tag">Product Internship · May – July 2025</div>
-    <div class="win-h1">B2B Analytics Dashboard & RM Training</div>
-    <p class="win-p">Drove B2B product adoption at LenDenClub Techserve through analytics dashboards, partner engagement redesign, and a high-impact RM training program.</p>
-    <div class="impact-row">
-      <div class="impact-stat"><div class="stat-val">20%</div><div class="stat-label">Reduction in channel activation time</div></div>
-      <div class="impact-stat"><div class="stat-val">28%</div><div class="stat-label">Boost in channel partner engagement</div></div>
-      <div class="impact-stat"><div class="stat-val">15%</div><div class="stat-label">Increase in DAU adoption</div></div>
-    </div>
-    <div class="win-divider"></div>
-    <div class="win-label">Key Contributions</div>
-    <ul class="win-bullets">
-      <li>Designed analytics dashboard projecting 20% faster channel activation — enabling quicker revenue realisation by the sales team</li>
-      <li>Redesigned reporting platform improving insight accuracy on investment details and XIRR, boosting partner engagement by 28%</li>
-      <li>Tracked DAU metrics, backed by a feedback program with 50+ RMs to set feature priorities and fix pain points</li>
-      <li>Designed and delivered RM training program achieving 80% avg quiz score and 4/5 product satisfaction rating</li>
+  <aside class="sticky-note">
+    <h4>📌 Currently Open to:</h4>
+    <ul>
+      <li>Product Manager</li>
+      <li>Product Analyst</li>
+      <li>Strategy Consulting</li>
+      <li>Business Analyst</li>
     </ul>
-    <div class="win-label">Tools & Methods</div>
-    <div class="tag-row">
-      <span class="win-tag-pill">Analytics Dashboard</span>
-      <span class="win-tag-pill">DAU Tracking</span>
-      <span class="win-tag-pill">B2B Product</span>
-      <span class="win-tag-pill">User Feedback</span>
-      <span class="win-tag-pill">CRM</span>
-    </div>
-  </div>
-</div>
+  </aside>
 
-<!-- PROJECT 2 — Raksha112 -->
-<div class="window" id="win-proj2" style="width:540px;height:75vh;top:60px;left:200px;display:none">
-  <div class="win-titlebar" id="tb-win-proj2">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('proj2')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('proj2')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('proj2')"></button>
-    </div>
-    <span class="win-title-text">Raksha112 App Enhancement</span>
+  <div class="modal" id="about-modal" aria-hidden="true">
+    <article class="modal-card">
+      <header class="modal-header">
+        <h3>About Me</h3>
+        <button class="close" data-close="about-modal">×</button>
+      </header>
+      <div class="modal-body scroll-body">
+        <div class="soft-box">
+          Hi! I'm Pragati - an MBA (Business Analytics) candidate at <strong>BITS Pilani</strong> with a unique background bridging hardware engineering and product strategy.
+        </div>
+        <p>I've gone from building patented IoT modules at Secure Meters to driving B2B product adoption at LenDenClub and shaping global expansion strategy at Btribe.</p>
+        <p>I thrive at the intersection of <strong>data, user empathy, and strategic thinking</strong> - turning ambiguity into clear, actionable product decisions. I'm actively seeking roles where I can drive meaningful impact.</p>
+        <div class="about-meta-grid">
+          <div class="meta-card">📍 India</div>
+          <div class="meta-card">🎓 MBA Business Analytics</div>
+          <div class="meta-card">🏫 BITS Pilani</div>
+          <div class="meta-card">⚙️ B.Tech ECE</div>
+        </div>
+      </div>
+    </article>
   </div>
-  <div class="win-body">
-    <div class="proj-win-header" style="background:linear-gradient(135deg,rgba(236,72,153,0.2),rgba(167,139,250,0.12))">
-      <span>🚨</span>
-    </div>
-    <div class="win-tag">Product Management · Academic Project</div>
-    <div class="win-h1">Emergency Services App — Product Strategy</div>
-    <div class="win-divider"></div>
-    <div class="win-label">Summary</div>
-    <ul class="win-bullets">
-      <li>Designed 'Raksha112' app to enhance emergency service delivery, conducting research by extracting 1000 user reviews via Apify web scraping.</li>
-      <li>Conducted sentiment analysis to identify 4 major critical pain points and mapped sentiment across 875 positive, 85 neutral, 40 negative reviews.</li>
-      <li>Designed 12 strategic features with success metrics, applied feature prioritization and Impact-Effort Matrix, and created personas.</li>
-      <li>Produced wireframes in Miro to communicate product vision.</li>
-    </ul>
-    <div class="win-label" style="margin-top:10px">Skills</div>
-    <div class="tag-row">
-      <span class="win-tag-pill">Miro</span>
-      <span class="win-tag-pill">Product Improvement</span>
-      <span class="win-tag-pill">Sentiment Analysis</span>
-      <span class="win-tag-pill">NLP</span>
-    </div>
-    <div class="impact-row">
-      <div class="impact-stat"><div class="stat-val">1000</div><div class="stat-label">User reviews extracted via Apify</div></div>
-      <div class="impact-stat"><div class="stat-val">4</div><div class="stat-label">Critical pain points identified</div></div>
-      <div class="impact-stat"><div class="stat-val">12</div><div class="stat-label">Strategic features designed</div></div>
-    </div>
-    <div class="win-divider"></div>
-    <div class="win-label">Key Contributions</div>
-    <ul class="win-bullets">
-      <li>Extracted 1,000 user reviews via Apify web scraping and conducted sentiment analysis across 875 positive, 85 neutral, 40 negative reviews</li>
-      <li>Identified 4 major critical pain points and mapped sentiment distribution to inform product decisions</li>
-      <li>Designed 12 strategic features with success metrics, applied Impact-Effort Matrix for prioritisation</li>
-      <li>Created user personas and wireframes in Miro to communicate product vision</li>
-    </ul>
-    <div class="win-label">Tools & Methods</div>
-    <div class="tag-row">
-      <span class="win-tag-pill">Sentiment Analysis</span>
-      <span class="win-tag-pill">Apify Scraping</span>
-      <span class="win-tag-pill">Miro Wireframes</span>
-      <span class="win-tag-pill">Impact-Effort Matrix</span>
-      <span class="win-tag-pill">Persona Mapping</span>
-    </div>
-    <div style="margin-top:8px">
-      <a href="https://drive.google.com/drive/folders/1iZkqM6FgdgIshsWFfIJlbjsRifiIB8ni?usp=sharing" target="_blank" class="win-btn">View Project Files ↗</a>
-    </div>
-  </div>
-</div>
 
-<!-- PROJECT 3 — Salon Franchise -->
-<div class="window" id="win-proj3" style="width:540px;top:140px;left:220px;display:none">
-  <div class="win-titlebar" id="tb-win-proj3">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('proj3')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('proj3')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('proj3')"></button>
-    </div>
-    <span class="win-title-text">Beauty Salon Franchise Expansion</span>
+  <div class="modal" id="resume-modal" aria-hidden="true">
+    <article class="modal-card">
+      <header class="modal-header">
+        <h3>Resume</h3>
+        <button class="close" data-close="resume-modal">×</button>
+      </header>
+      <div class="modal-body scroll-body">
+        <div class="resume-box">
+          Download my complete resume to learn more about my experience and qualifications.
+          <div class="actions">
+            <a class="btn primary" href="https://drive.google.com/uc?export=download&id=1Kmi3bTtdnxp0aoz9FcBcUIlGSHfHt819" target="_blank" rel="noopener noreferrer">⬇ Download Resume</a>
+            <a class="btn" href="https://drive.google.com/file/d/1Kmi3bTtdnxp0aoz9FcBcUIlGSHfHt819/view?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View Online</a>
+          </div>
+        </div>
+      </div>
+    </article>
   </div>
-  <div class="win-body">
-    <div class="proj-win-header" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(16,185,129,0.12))">
-      <span>💅</span>
-    </div>
-    <div class="win-tag">Management Consulting · Business Plan</div>
-    <div class="win-h1">Salon Franchise Expansion Strategy</div>
-    <p class="win-p">Developed a comprehensive business plan for a beauty salon franchise expansion covering brand strategy, market analysis, financial modelling, and go-to-market planning.</p>
-    <div class="win-divider"></div>
-    <div class="win-label">Key Contributions</div>
-    <ul class="win-bullets">
-      <li>Developed brand identity and vision, analysing demographics and psychographics to target the right customer segments</li>
-      <li>Created financial projections covering revenue models, cost structures, investment requirements, and membership frameworks</li>
-      <li>Built profit-loss forecasts and break-even analysis to validate expansion viability</li>
-      <li>Designed a go-to-market strategy covering segmentation, positioning, and channel enablement</li>
-    </ul>
-    <div class="win-label">Tools & Methods</div>
-    <div class="tag-row">
-      <span class="win-tag-pill">Financial Modelling</span>
-      <span class="win-tag-pill">Market Sizing</span>
-      <span class="win-tag-pill">P&L Forecasting</span>
-      <span class="win-tag-pill">Brand Strategy</span>
-      <span class="win-tag-pill">Excel</span>
-    </div>
-  </div>
-</div>
 
-<!-- PROJECT 4 — Stock/Macro Analysis -->
-<div class="window" id="win-proj4" style="width:540px;top:160px;left:240px;display:none">
-  <div class="win-titlebar" id="tb-win-proj4">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('proj4')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('proj4')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('proj4')"></button>
-    </div>
-    <span class="win-title-text">Macroeconomic & Stock Analysis</span>
+  <div class="modal" id="contact-modal" aria-hidden="true">
+    <article class="modal-card contact-modal-card">
+      <header class="modal-header contact-modal-header">
+        <h3>Get in Touch</h3>
+        <button class="close" data-close="contact-modal">×</button>
+      </header>
+      <div class="modal-body scroll-body contact-modal-body">
+        <div class="contact-mint-panel">
+          <p class="contact-intro">Open to product, strategy and consulting opportunities. Feel free to reach out!</p>
+          <div class="contact-cards">
+            <a href="mailto:pragatityagi040@gmail.com" class="contact-item">
+              <span class="contact-item-icon contact-icon-mail" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="#fff" stroke-width="2"/><path d="m22 6-10 7L2 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="contact-item-text">
+                <span class="label">Email</span>
+                <span class="value">pragatityagi040@gmail.com</span>
+              </span>
+            </a>
+            <a href="https://linkedin.com/in/tyagi-pragati" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <span class="contact-item-icon contact-icon-in" aria-hidden="true">
+                <span class="contact-li-mark">in</span>
+              </span>
+              <span class="contact-item-text">
+                <span class="label">LinkedIn</span>
+                <span class="value">linkedin.com/in/tyagi-pragati</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
   </div>
-  <div class="win-body">
-    <div class="proj-win-header" style="background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(239,68,68,0.12))">
-      <span>📈</span>
-    </div>
-    <div class="win-tag">Financial Analytics</div>
-    <div class="win-h1">Macro Regimes & Portfolio Optimization</div>
-    <div class="win-divider"></div>
-    <div class="win-label">Summary</div>
-    <ul class="win-bullets">
-      <li>Conducting macroeconomic regime-based analysis by clustering time periods with similar economic conditions (Inflation, liquidity, GDP)</li>
-      <li>Measuring regime impact on equity factor performance by analysing return differentials between Value-Growth and Small-Large portfolios</li>
-    </ul>
-    <div style="margin-top:8px">
-      <button
-        type="button"
-        class="win-btn"
-        onclick="openUrlInNewTab('https://drive.google.com/file/d/1Jz4S0AGGmHu4Ubokxe4peVYLk0KFQbgI/view?usp=sharing')"
-      >Click on me to see the files</button>
-    </div>
-    <div class="win-label" style="margin-top:14px">Tools & Methods</div>
-    <div class="tag-row">
-      <span class="win-tag-pill">PCA & K-Means</span>
-      <span class="win-tag-pill">Financial Derivatives</span>
-      <span class="win-tag-pill">SQL</span>
-    </div>
-  </div>
-</div>
 
-<!-- PROJECT 5 — Alumni Connect App Live Project -->
-<div class="window" id="win-alumni" style="width:620px;top:140px;left:210px;display:none">
-  <div class="win-titlebar" id="tb-win-alumni">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('alumni')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('alumni')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('alumni')"></button>
-    </div>
-    <span class="win-title-text">Alumni Connect — Live Project</span>
-  </div>
-  <div class="win-body">
-    <div class="proj-win-header" style="background:linear-gradient(135deg,rgba(99,102,241,0.22),rgba(167,139,250,0.12))">
-      <span>🎓</span>
-    </div>
-    <div class="win-tag">Product · Primary Research · Strategy</div>
-    <div class="win-h1">Product - Alumni Connect App Live Project</div>
-    <p class="win-p">Alumni Connect App: Defined product vision and strategy by conducting primary user research with 50+ participants, converting user pain points into a prioritized feature roadmap, mapping user personas, designing 5+ UI wireframes in Figma, establishing KPIs, and designing a go-to-market strategy</p>
-    <div class="win-divider"></div>
-    <div class="win-label">Skills</div>
-    <div class="tag-row">
-      <span class="win-tag-pill">Product Management</span>
-      <span class="win-tag-pill">Figma</span>
-      <span class="win-tag-pill">Product Design</span>
-      <span class="win-tag-pill">User Interface Design</span>
-      <span class="win-tag-pill">Primary Research</span>
-    </div>
-    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-      <a href="https://drive.google.com/drive/folders/14G4SKkLEPeSbHgIe4F6xlUxesPI0yTw5?usp=sharing" target="_blank" rel="noopener noreferrer" class="win-btn">Click here to see full files</a>
-      <a href="https://www.figma.com/design/6sjt1s1yJynBD6JL0Dgzb0/PM-Alumni-Connect-App?node-id=0-1&t=XfgVhPmfXINijyrU-1" target="_blank" rel="noopener noreferrer" class="win-btn-ghost">Peek Inside: Alumni Connect Wireframes</a>
-    </div>
-  </div>
-</div>
+  <div class="modal" id="lendemclub-modal" aria-hidden="true">
+    <article class="modal-card">
+      <header class="modal-header">
+        <h3>Product Intern - LenDenClub</h3>
+        <button class="close" data-close="lendemclub-modal">×</button>
+      </header>
+      <div class="modal-body scroll-body">
+        <div class="project-highlight">
+          <div class="project-meta">
+            <span class="meta-pill">May - July 2025</span>
+            <span class="meta-pill">Product Internship</span>
+          </div>
+          <h4>B2B Analytics Dashboard &amp; RM Training</h4>
+          <p>Drove B2B product adoption at LenDenClub Techserve through analytics dashboards, partner engagement redesign, and a high-impact RM training program.</p>
+        </div>
 
-<!-- PROJECT 6 — Guesstimate -->
-<div class="window" id="win-guesstimate" style="width:620px;top:160px;left:200px;display:none">
-  <div class="win-titlebar" id="tb-win-guesstimate">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('guesstimate')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('guesstimate')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('guesstimate')"></button>
-    </div>
-    <span class="win-title-text">Guesstimate — Delhi Momo Plates</span>
-  </div>
-  <div class="win-body">
-    <div class="proj-win-header" style="background:linear-gradient(135deg,rgba(245,158,11,0.22),rgba(96,174,255,0.08))">
-      <span>🧮</span>
-    </div>
-    <div class="win-tag">Estimation · Market Sizing</div>
-    <div class="win-h1">Guesstimate</div>
-    <p class="win-p">Estimate the no. of plates of Momo being sold in Delhi.</p>
-    <div style="margin-top:14px">
-      <a href="https://docs.google.com/document/d/10QsSetJ6u91kF-12TGt7sO6BOnyGG6Hu/edit?usp=sharing&ouid=115503271631731189929&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="win-btn">Click here for more details</a>
-    </div>
-  </div>
-</div>
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="value">20%</div>
+            <div class="label">Reduction in channel activation time</div>
+          </div>
+          <div class="stat-card">
+            <div class="value">28%</div>
+            <div class="label">Boost in partner engagement</div>
+          </div>
+          <div class="stat-card">
+            <div class="value">15%</div>
+            <div class="label">Increase in DAU adoption</div>
+          </div>
+        </div>
 
-<!-- PROJECT 7 — Air India–Vistara Merger Analysis -->
-<div class="window" id="win-airindia" style="width:640px;top:120px;left:160px;display:none">
-  <div class="win-titlebar" id="tb-win-airindia">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('airindia')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('airindia')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('airindia')"></button>
-    </div>
-    <span class="win-title-text">Air India–Vistara Merger Analysis</span>
-  </div>
-  <div class="win-body">
-    <div class="proj-win-header" style="background:linear-gradient(135deg,rgba(16,185,129,0.22),rgba(167,139,250,0.10))">
-      <span>✈️</span>
-    </div>
-    <div class="win-tag">Finance · Operations · Strategy</div>
-    <div class="win-h1">Air India–Vistara Merger Analysis</div>
-    <p class="win-p">Financial, operational and strategic perspective of Air India–Vistara merger (2024–2025) and explored possible rationale behind the M&amp;A for all stakeholders involved</p>
-    <div class="win-divider"></div>
-    <div class="win-label">Skills</div>
-    <div class="tag-row">
-      <span class="win-tag-pill">Merger and Acquisition</span>
-      <span class="win-tag-pill">Financial Analysis</span>
-    </div>
-    <div style="margin-top:14px">
-      <a href="https://drive.google.com/file/d/1csGN-v9wOFrozuMsN5Dlo2VHcDiNOqZU/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="win-btn">Click here for more details</a>
-    </div>
-  </div>
-</div>
+        <h4 class="modal-subtitle">Key Contributions</h4>
+        <ul class="dot-list">
+          <li>Designed analytics dashboard projecting 20% faster channel activation, enabling quicker revenue realization by the sales team.</li>
+          <li>Redesigned reporting platform improving insight accuracy on investment details and XIRR, boosting partner engagement by 28%.</li>
+          <li>Tracked DAU metrics and ran feedback sessions with 50+ RMs to set feature priorities and fix pain points.</li>
+          <li>Designed and delivered RM training program achieving 80% average quiz score and 4/5 product satisfaction rating.</li>
+        </ul>
 
-<!-- SKILLS WINDOW -->
-<div class="window" id="win-skills" style="width:560px;top:90px;left:160px;display:none">
-  <div class="win-titlebar" id="tb-win-skills">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('skills')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('skills')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('skills')"></button>
-    </div>
-    <span class="win-title-text">Skills — Pragati Tyagi</span>
+        <h4 class="modal-subtitle">Tools &amp; Methods</h4>
+        <div class="tag-row">
+          <span class="tag">Analytics Dashboard</span>
+          <span class="tag">DAU Tracking</span>
+          <span class="tag">B2B Product</span>
+          <span class="tag">User Feedback</span>
+          <span class="tag">CRM</span>
+        </div>
+      </div>
+    </article>
   </div>
-  <div class="win-body">
-    <div class="win-tag">Expertise</div>
-    <div class="win-h1" style="font-size:22px;margin-bottom:20px">What I bring to the table</div>
-    <div class="skills-win-grid">
-      <div class="skill-win-block">
-        <h4>Product</h4>
-        <ul>
-          <li>Product Roadmapping</li>
-          <li>User Story Writing</li>
-          <li>Go-to-Market Strategy</li>
-          <li>Feature Prioritisation</li>
-          <li>Persona Mapping</li>
-          <li>Stakeholder Management</li>
+
+  <div class="modal" id="skills-modal" aria-hidden="true">
+    <article class="modal-card skills-modal-card">
+      <header class="modal-header skills-modal-header">
+        <h3>Skills &amp; Expertise</h3>
+        <button class="close" data-close="skills-modal">×</button>
+      </header>
+      <div class="modal-body scroll-body skills-modal-body">
+        <div class="skills-category product">
+          <h4>Product</h4>
+          <div class="skills-grid">
+            <span>Product Roadmapping</span><span>User Story Writing</span><span>Go-to-Market Strategy</span>
+            <span>Feature Prioritisation</span><span>Persona Mapping</span><span>Stakeholder Management</span>
+          </div>
+        </div>
+
+        <div class="skills-category strategy">
+          <h4>Strategy &amp; Analysis</h4>
+          <div class="skills-grid">
+            <span>Market Research &amp; Sizing</span><span>Financial Modelling</span><span>Competitive Analysis</span>
+            <span>Business Case Development</span><span>Root Cause Analysis</span><span>International Expansion</span>
+          </div>
+        </div>
+
+        <div class="skills-category tools">
+          <h4>Tools &amp; Data</h4>
+          <div class="skills-grid">
+            <span>Python &amp; PySpark</span><span>SQL</span><span>Tableau &amp; Power BI</span>
+            <span>Figma &amp; Miro</span><span>Excel (Advanced)</span><span>Gen AI Tools</span>
+          </div>
+        </div>
+
+        <div class="skills-category soft">
+          <h4>Soft Skills</h4>
+          <div class="skills-grid">
+            <span>Cross-functional Collaboration</span><span>Storytelling with Data</span><span>Executive Communication</span>
+            <span>User Research &amp; Interviews</span><span>First-principles Thinking</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="modal" id="businessanalytics-modal" aria-hidden="true">
+    <article class="modal-card">
+      <header class="modal-header">
+        <h3>Business Analytics Projects</h3>
+        <button class="close" data-close="businessanalytics-modal">×</button>
+      </header>
+      <div class="modal-body scroll-body">
+        <div class="stacked-projects">
+          <div class="project-card">
+            <div class="head">
+              <div class="icon-mini icon-violet">📈</div>
+              <div>
+                <h5>Macroeconomic &amp; Stock Market Analysis</h5>
+                <p>Macro regimes &amp; portfolio optimization analysis</p>
+              </div>
+            </div>
+            <div class="hl">Key Highlights</div>
+            <ul class="mini-dot-list">
+              <li>Conducting macroeconomic regime-based analysis by clustering time periods with similar economic conditions (inflation, liquidity, GDP).</li>
+              <li>Measuring regime impact on equity factor performance via return differentials between Value-Growth and Small-Large portfolios.</li>
+              <li>Building cloud-native portfolio optimizer on AWS using PySpark, S3 and Lambda with 10GB+ financial data.</li>
+            </ul>
+            <div class="tag-row chips-blue">
+              <span class="tag">PCA &amp; K-Means</span><span class="tag">Financial Derivatives</span><span class="tag">SQL</span><span class="tag">PySpark</span><span class="tag">AWS</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="https://drive.google.com/file/d/1Jz4S0AGGmHu4Ubokxe4peVYLk0KFQbgI/view?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View Project</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="head">
+              <div class="icon-mini" style="background:#bfeede;">🧮</div>
+              <div>
+                <h5>Guesstimate - Delhi Momo Plates</h5>
+                <p>Market sizing and estimation exercise</p>
+              </div>
+            </div>
+            <div class="hl">Key Highlights</div>
+            <ul class="mini-dot-list">
+              <li>Estimated the number of plates of momo sold in Delhi.</li>
+              <li>Applied structured estimation frameworks and market sizing techniques.</li>
+              <li>Broke down the problem using first-principles thinking.</li>
+            </ul>
+            <div class="tag-row" style="--chip-bg:#d6f2e8;">
+              <span class="tag" style="background:#d8f3e9;border-color:#bfe6d7;">Estimation</span>
+              <span class="tag" style="background:#d8f3e9;border-color:#bfe6d7;">Market Sizing</span>
+              <span class="tag" style="background:#d8f3e9;border-color:#bfe6d7;">First-principles Thinking</span>
+              <span class="tag" style="background:#d8f3e9;border-color:#bfe6d7;">Quantitative Analysis</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="https://docs.google.com/document/d/10QsSetJ6u91kF-12TGt7sO6BOnyGG6Hu/edit?usp=sharing&ouid=115503271631731189929&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">↗ View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="modal" id="securemeters-modal" aria-hidden="true">
+    <article class="modal-card">
+      <header class="modal-header">
+        <h3>Hardware Developer - Secure Meters</h3>
+        <button class="close" data-close="securemeters-modal">×</button>
+      </header>
+      <div class="modal-body">
+        <div class="project-highlight" style="background:#f1fbf3;border-color:#deefe1;">
+          <div class="project-meta">
+            <span class="meta-pill">Jul 2020 - Feb 2022</span>
+            <span class="meta-pill">Full-time</span>
+          </div>
+          <h4>IoT Innovation &amp; Patent Development</h4>
+          <p>Optimized cost efficiency, innovation, and product lifecycle expansion, strengthening competitiveness in smart metering market.</p>
+        </div>
+        <h4 class="modal-subtitle">Key Achievements</h4>
+        <ul class="dot-list">
+          <li>Enabled smart meter portfolio expansion by executing LPWAN PoC across 2 products, unlocking cross-product standardisation.</li>
+          <li>Delivered <strong>15% reduction</strong> in per-unit manufacturing cost by replacing third-party communication modules with proprietary design.</li>
+          <li>Partnered with Texas Instruments and Fraunhofer to co-develop patented LPWAN modules and accelerate IP development.</li>
+          <li>Enabled pre-commercialization of 2 smart meter SKUs by integrating 25 MIOTY prototypes and validating 20km+ range across field scenarios.</li>
         </ul>
       </div>
-      <div class="skill-win-block">
-        <h4>Strategy & Analysis</h4>
-        <ul>
-          <li>Market Research & Sizing</li>
-          <li>Financial Modelling</li>
-          <li>Competitive Analysis</li>
-          <li>Business Case Development</li>
-          <li>Root Cause Analysis</li>
-          <li>International Expansion</li>
-        </ul>
-      </div>
-      <div class="skill-win-block">
-        <h4>Tools & Data</h4>
-        <ul>
-          <li>Python & PySpark</li>
-          <li>SQL</li>
-          <li>Tableau & Power BI</li>
-          <li>Figma & Miro</li>
-          <li>Excel (Advanced)</li>
-          <li>Gen AI Tools</li>
-        </ul>
-      </div>
-      <div class="skill-win-block">
-        <h4>Soft Skills</h4>
-        <ul>
-          <li>Cross-functional Collaboration</li>
-          <li>Storytelling with Data</li>
-          <li>Executive Communication</li>
-          <li>User Research & Interviews</li>
-          <li>First-principles Thinking</li>
-        </ul>
-      </div>
-    </div>
+    </article>
   </div>
-</div>
 
-<!-- RESUME WINDOW -->
-<div class="window" id="win-resume" style="width:680px;height:85vh;top:60px;left:180px;display:none">
-  <div class="win-titlebar" id="tb-win-resume">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('resume')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('resume')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('resume')"></button>
-    </div>
-    <span class="win-title-text">Resume.pdf — Pragati Tyagi</span>
+  <div class="modal" id="consulting-modal" aria-hidden="true">
+    <article class="modal-card">
+      <header class="modal-header">
+        <h3>Consulting Projects</h3>
+        <button class="close" data-close="consulting-modal">×</button>
+      </header>
+      <div class="modal-body">
+        <div class="stacked-projects">
+          <div class="project-card">
+            <div class="head">
+              <div class="icon-mini icon-yellow">💅</div>
+              <div>
+                <h5>Beauty Salon Franchise Expansion</h5>
+                <p>Management consulting project for salon franchise expansion strategy</p>
+              </div>
+            </div>
+            <div class="hl">Key Highlights</div>
+            <ul class="mini-dot-list">
+              <li>Developed brand identity and vision, analysing demographics and psychographics.</li>
+              <li>Created financial projections covering revenue models, costs, and investment frameworks.</li>
+              <li>Built profit-loss forecasts and break-even analysis to validate expansion viability.</li>
+              <li>Designed go-to-market strategy covering segmentation, positioning, and channel enablement.</li>
+            </ul>
+            <div class="tag-row chips-yellow">
+              <span class="tag">Financial Modelling</span><span class="tag">Market Sizing</span><span class="tag">P&amp;L Forecasting</span><span class="tag">Brand Strategy</span><span class="tag">Excel</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="head">
+              <div class="icon-mini icon-pink">✈️</div>
+              <div>
+                <h5>Air India-Vistara Merger Analysis</h5>
+                <p>Financial, operational and strategic analysis of the merger</p>
+              </div>
+            </div>
+            <div class="hl">Key Highlights</div>
+            <ul class="mini-dot-list">
+              <li>Analyzed the merger from financial, operational and strategic perspectives.</li>
+              <li>Explored possible rationale behind the M&amp;A for all stakeholders involved.</li>
+              <li>Evaluated synergies, challenges, and strategic positioning in aviation market.</li>
+            </ul>
+            <div class="tag-row chips-pink">
+              <span class="tag">Merger &amp; Acquisition</span><span class="tag">Financial Analysis</span><span class="tag">Strategic Analysis</span><span class="tag">Market Research</span>
+            </div>
+            <div class="actions"><a class="btn primary" href="https://drive.google.com/file/d/1csGN-v9wOFrozuMsN5Dlo2VHcDiNOqZU/view?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View Project</a></div>
+          </div>
+        </div>
+      </div>
+    </article>
   </div>
-  <div style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
-    <!-- toolbar -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:rgba(15,15,28,0.6);border-bottom:1px solid rgba(255,255,255,0.07);flex-shrink:0;">
-      <span style="font-size:11.5px;color:rgba(255,255,255,0.45);font-family:var(--mono);">PragatiTyagi_Resume.pdf</span>
-      <div style="display:flex;gap:8px;">
-        <a href="https://drive.google.com/uc?export=download&id=1Kmi3bTtdnxp0aoz9FcBcUIlGSHfHt819" target="_blank" class="win-btn" style="margin-top:0;padding:6px 16px;font-size:11.5px;">Download ↓</a>
-        <a href="https://drive.google.com/file/d/1Kmi3bTtdnxp0aoz9FcBcUIlGSHfHt819/view?usp=drive_link" target="_blank" class="win-btn-ghost" style="margin-top:0;margin-left:0;padding:6px 16px;font-size:11.5px;">Open in Drive ↗</a>
+
+  <div class="modal" id="productmanagement-modal" aria-hidden="true">
+    <article class="modal-card">
+      <header class="modal-header">
+        <h3>Product Management Projects</h3>
+        <button class="close" data-close="productmanagement-modal">×</button>
+      </header>
+      <div class="modal-body">
+        <div class="stacked-projects">
+          <div class="project-card">
+            <div class="head">
+              <div class="icon-mini" style="background:#f7d8ff;">🚨</div>
+              <div>
+                <h5>Raksha112 App Enhancement</h5>
+                <p>Designed 'Raksha112' app to enhance emergency service delivery</p>
+              </div>
+            </div>
+            <div class="stat-row" style="margin-top:8px;">
+              <div class="stat-card"><div class="value" style="color:#eab0ee;">1000</div><div class="label">User reviews extracted</div></div>
+              <div class="stat-card"><div class="value" style="color:#d3b4e7;">4</div><div class="label">Critical pain points</div></div>
+              <div class="stat-card"><div class="value" style="color:#cfa7f0;">12</div><div class="label">Strategic features</div></div>
+            </div>
+            <div class="hl">Key Highlights</div>
+            <ul class="mini-dot-list">
+              <li>Extracted 1,000 reviews via Apify and performed sentiment analysis (875 positive, 85 neutral, 40 negative).</li>
+              <li>Identified 4 critical pain points and mapped sentiment distribution for product decisions.</li>
+              <li>Designed 12 strategic features and prioritized with Impact-Effort Matrix.</li>
+              <li>Created personas and wireframes in Miro to communicate product vision.</li>
+            </ul>
+            <div class="tag-row chips-pink">
+              <span class="tag">Sentiment Analysis</span><span class="tag">Apify Scraping</span><span class="tag">Miro Wireframes</span><span class="tag">Impact-Effort Matrix</span><span class="tag">Persona Mapping</span>
+            </div>
+            <div class="actions"><a class="btn primary" href="https://drive.google.com/drive/folders/1iZkqM6FgdgIshsWFfIJlbjsRifiIB8ni?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View Project</a></div>
+          </div>
+
+          <div class="project-card">
+            <div class="head">
+              <div class="icon-mini icon-violet">🎓</div>
+              <div>
+                <h5>Alumni Connect App</h5>
+                <p>Live project defining product vision and strategy through primary user research</p>
+              </div>
+            </div>
+            <div class="hl">Key Highlights</div>
+            <ul class="mini-dot-list">
+              <li>Conducted primary user research with 50+ participants to understand pain points and requirements.</li>
+              <li>Translated pain points into prioritized roadmap through persona mapping and competitor analysis.</li>
+              <li>Designed 5+ UI wireframes in Figma and established success KPIs.</li>
+              <li>Designed comprehensive go-to-market strategy for launch.</li>
+            </ul>
+            <div class="tag-row chips-blue">
+              <span class="tag">Product Management</span><span class="tag">Figma</span><span class="tag">Product Design</span><span class="tag">UI Design</span><span class="tag">Primary Research</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="https://drive.google.com/drive/folders/14G4SKkLEPeSbHgIe4F6xlUxesPI0yTw5?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View Project</a>
+              <a class="btn" href="https://www.figma.com/design/6sjt1s1yJynBD6JL0Dgzb0/PM-Alumni-Connect-App?node-id=0-1&t=XfgVhPmfXINijyrU-1" target="_blank" rel="noopener noreferrer">↗ Figma Design</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- PDF embed via Google Docs Viewer (avoids X-Frame-Options block) -->
-    <iframe
-      src="https://docs.google.com/viewer?url=https://drive.google.com/uc?id%3D1Kmi3bTtdnxp0aoz9FcBcUIlGSHfHt819&embedded=true"
-      style="flex:1;width:100%;border:none;background:#1a1a2e;"
-      title="Pragati Tyagi Resume">
-    </iframe>
+    </article>
   </div>
-</div>
 
-<!-- CONTACT WINDOW -->
-<div class="window" id="win-contact" style="width:420px;top:100px;left:240px;display:none">
-  <div class="win-titlebar" id="tb-win-contact">
-    <div class="win-controls">
-      <button class="win-ctrl win-close" onclick="closeWindow('contact')"></button>
-      <button class="win-ctrl win-min" onclick="minimizeWindow('contact')"></button>
-      <button class="win-ctrl win-max" onclick="maximizeWindow('contact')"></button>
-    </div>
-    <span class="win-title-text">Contact — Pragati Tyagi</span>
-  </div>
-  <div class="win-body">
-    <div class="win-tag">Get in touch</div>
-    <div class="win-h1" style="font-size:22px;margin-bottom:6px">Let's connect</div>
-    <p class="win-p">Open to product, strategy and consulting opportunities. Feel free to reach out!</p>
-    <div class="win-divider"></div>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    <a href="/cdn-cgi/l/email-protection#5121233036302538252830363861656111363c30383d7f323e3c" class="contact-win-item">
-      <div class="contact-win-icon" style="background:rgba(96,174,255,0.15)">📧</div>
-      <div class="contact-win-text">
-        <div class="contact-win-label">Email</div>
-        <div class="contact-win-value"><span class="__cf_email__" data-cfemail="d4a4a6b5b3b5a0bda0adb5b3bde4e0e494b3b9b5bdb8fab7bbb9">[email&#160;protected]</span></div>
-      </div>
-    </a>
-    <a href="tel:+918279809195" class="contact-win-item">
-      <div class="contact-win-icon" style="background:rgba(16,185,129,0.15)">📱</div>
-      <div class="contact-win-text">
-        <div class="contact-win-label">Phone</div>
-        <div class="contact-win-value">+91 82798 09195</div>
-      </div>
-    </a>
-    <a href="https://linkedin.com/in/tyagi-pragati" target="_blank" class="contact-win-item">
-      <div class="contact-win-icon" style="background:rgba(59,130,246,0.15)">💼</div>
-      <div class="contact-win-text">
-        <div class="contact-win-label">LinkedIn</div>
-        <div class="contact-win-value">linkedin.com/in/tyagi-pragati</div>
-      </div>
-    </a>
-    <a href="https://drive.google.com/file/d/1Kmi3bTtdnxp0aoz9FcBcUIlGSHfHt819/view?usp=drive_link" target="_blank" class="contact-win-item">
-      <div class="contact-win-icon" style="background:rgba(167,139,250,0.15)">📄</div>
-      <div class="contact-win-text">
-        <div class="contact-win-label">Resume</div>
-        <div class="contact-win-value">Download CV →</div>
-      </div>
-    </a>
-  </div>
-</div>
+    (function initContactPhone() {
+      var link = document.getElementById("contact-phone-link");
+      if (!link) return;
+      try {
+        var raw = atob(link.getAttribute("data-tel64") || "");
+        var digits = raw.replace(/\D/g, "");
+        if (digits.length >= 10) {
+          link.setAttribute("href", "tel:+" + digits);
+          var local = digits.slice(-10);
+          var label = link.querySelector(".contact-phone-value");
+          if (label) label.textContent = "+91 " + local.slice(0, 5) + " " + local.slice(5);
+        }
+      } catch (err) {}
+    })();
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── CLOCK ──
-function updateClock(){
-  const now=new Date();
-  const h=String(now.getHours()).padStart(2,'0');
-  const m=String(now.getMinutes()).padStart(2,'0');
-  document.getElementById('clock').textContent=h+':'+m;
-  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  document.getElementById('date-display').textContent=days[now.getDay()]+', '+months[now.getMonth()]+' '+now.getDate();
-}
-updateClock();setInterval(updateClock,10000);
-
-// ── WINDOW MANAGEMENT ──
-let zTop=200;
-const winState={};
-
-function openWindow(id){
-  const w=document.getElementById('win-'+id);
-  if(!w)return;
-  if(winState[id]==='minimized'){
-    w.style.display='flex';
-    w.style.transform='';
-    winState[id]='open';
-    bringToFront(w);
-    return;
-  }
-  if(w.style.display==='flex'){bringToFront(w);return;}
-  w.style.display='flex';
-  winState[id]='open';
-  bringToFront(w);
-  markTaskbarActive(id,true);
-  makeDraggable(w,'tb-win-'+id);
-}
-
-function closeWindow(id){
-  const w=document.getElementById('win-'+id);
-  if(!w)return;
-  w.classList.add('closing');
-  setTimeout(()=>{
-    w.style.display='none';
-    w.classList.remove('closing');
-    winState[id]='closed';
-    markTaskbarActive(id,false);
-  },140);
-}
-
-function minimizeWindow(id){
-  const w=document.getElementById('win-'+id);
-  if(!w)return;
-  w.style.display='none';
-  winState[id]='minimized';
-}
-
-function maximizeWindow(id){
-  const w=document.getElementById('win-'+id);
-  if(!w)return;
-  if(w.dataset.maximized==='true'){
-    w.style.top=w.dataset.prevTop;
-    w.style.left=w.dataset.prevLeft;
-    w.style.width=w.dataset.prevW;
-    w.style.height=w.dataset.prevH||'';
-    w.dataset.maximized='false';
-  } else {
-    w.dataset.prevTop=w.style.top;
-    w.dataset.prevLeft=w.style.left;
-    w.dataset.prevW=w.style.width;
-    w.dataset.prevH=w.style.height;
-    w.style.top='4px';
-    w.style.left='4px';
-    w.style.width='calc(100vw - 8px)';
-    w.style.height='calc(100vh - 60px)';
-    w.dataset.maximized='true';
-  }
-}
-
-function bringToFront(w){zTop++;w.style.zIndex=zTop;}
-
-function markTaskbarActive(id,active){
-  const el=document.getElementById('tb-'+id);
-  if(el)el.classList.toggle('active',active);
-}
-
-// ── DRAGGABLE WINDOWS ──
-function makeDraggable(win,handleId){
-  const handle=document.getElementById(handleId);
-  if(!handle||handle._drag)return;
-  handle._drag=true;
-  let ox,oy;
-  handle.addEventListener('mousedown',e=>{
-    if(e.target.classList.contains('win-ctrl'))return;
-    bringToFront(win);
-    ox=e.clientX-win.getBoundingClientRect().left;
-    oy=e.clientY-win.getBoundingClientRect().top;
-    const mm=ev=>{
-      win.style.left=(ev.clientX-ox)+'px';
-      win.style.top=Math.max(0,ev.clientY-oy)+'px';
-    };
-    const mu=()=>{document.removeEventListener('mousemove',mm);document.removeEventListener('mouseup',mu)};
-    document.addEventListener('mousemove',mm);
-    document.addEventListener('mouseup',mu);
-    e.preventDefault();
-  });
-}
-
-// ── STICKY NOTE DRAG ──
-(function(){
-  const s=document.getElementById('sticky');
-  let ox,oy;
-  s.addEventListener('mousedown',e=>{
-    ox=e.clientX-s.getBoundingClientRect().left;
-    oy=e.clientY-s.getBoundingClientRect().top;
-    const mm=ev=>{
-      s.style.right='auto';
-      s.style.left=(ev.clientX-ox)+'px';
-      s.style.top=(ev.clientY-oy)+'px';
-    };
-    const mu=()=>{document.removeEventListener('mousemove',mm);document.removeEventListener('mouseup',mu)};
-    document.addEventListener('mousemove',mm);
-    document.addEventListener('mouseup',mu);
-    e.preventDefault();
-  });
-})();
-
-// ── UTIL: Open a URL in a new tab ──
-function openUrlInNewTab(url){
-  const a=document.createElement('a');
-  a.href=url;
-  a.target='_blank';
-  a.rel='noopener noreferrer';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
-
-// ── RESUME: always open in a new browser tab ──
-function openResumeInNewTab(){
-  const resumeId='1Kmi3bTtdnxp0aoz9FcBcUIlGSHfHt819';
-  // Open the Drive "view" page in a new tab (works with your existing Drive permissions).
-  const resumeUrl='https://drive.google.com/file/d/'+resumeId+'/view?usp=sharing';
-  openUrlInNewTab(resumeUrl);
-}
-
-// ── ICON CLICK — single click to open, data-link to open Drive URL instead ──
-document.querySelectorAll('.desktop-icon').forEach(icon => {
-  icon.addEventListener('click', e => {
-    // highlight
-    document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
-    icon.classList.add('selected');
-
-    const link = icon.dataset.link;
-    const win  = icon.dataset.win;
-
-    // Override resume: open directly in a new tab (what you asked for).
-    if (win === 'resume') {
-      openResumeInNewTab();
-      return;
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
     }
 
-    // Special case: alumni icon should both open the Drive folder and show the popup summary.
-    if (win === 'alumni') {
-      openWindow(win);
-      return;
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
     }
 
-    // Special case: Raksha112 icon should open the popup summary
-    // (instead of immediately navigating to the Drive folder link).
-    if (win === 'proj2') {
-      openWindow(win);
-      return;
-    }
+    document.querySelectorAll("[data-popup]").forEach((card) => {
+      card.addEventListener("click", () => openModal(card.dataset.popup + "-modal"));
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal(card.dataset.popup + "-modal");
+        }
+      });
+    });
 
-    if (link && link.trim() !== '') {
-      // Use anchor click instead of window.open to avoid popup blockers
-      const a = document.createElement('a');
-      a.href = link;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    } else if (win) {
-      openWindow(win);
-    }
-  });
-});
+    document.querySelectorAll("[data-close]").forEach((button) => {
+      button.addEventListener("click", () => closeModal(button.dataset.close));
+    });
 
-document.addEventListener('click', e => {
-  if (!e.target.closest('.desktop-icon') && !e.target.closest('.window')) {
-    document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
-  }
-});
+    document.querySelectorAll(".modal").forEach((modal) => {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal(modal.id);
+      });
+    });
 
-// ── RIGHT CLICK MENU ──
-const ctxMenu=document.getElementById('ctx-menu');
-
-function closeCtx(){
-  if(ctxMenu) ctxMenu.style.display='none';
-}
-
-function showCtxMenu(e){
-  e.preventDefault();
-  if(!ctxMenu) return;
-  ctxMenu.style.display='block';
-  ctxMenu.style.left=Math.min(e.clientX,window.innerWidth-200)+'px';
-  ctxMenu.style.top=Math.min(e.clientY,window.innerHeight-140)+'px';
-}
-
-// Hide the menu on left-click outside, and on Escape.
-document.addEventListener('click', e => {
-  if(!e.target.closest('#ctx-menu')) closeCtx();
-});
-document.addEventListener('keydown', e => {
-  if(e.key === 'Escape') closeCtx();
-});
-
-// ── PERSONAL PAGE VIEW COUNTER (client-side; GitHub Pages friendly) ──
-// How it works:
-// - Counter is hidden by default.
-// - If you open the page with the secret query parameter `?vc=<TOKEN>`,
-//   the browser stores an "authorized" flag in localStorage.
-// - After that, each page load increments and shows your personal view count.
-(function initPersonalPageViewCounter(){
-  const elId = 'view-counter';
-  const secretParam = 'vc';
-  // Replace this token if you want. Keep it secret.
-  const secretToken = 'PT_VIEW_COUNTER_SHOW_ME_7f9c2a';
-  const storageKeyPrefix = 'pt_personal_views_';
-
-  const el = document.getElementById(elId);
-  if(!el) return;
-
-  // Use the current path as the per-page key.
-  const pageKey = location.pathname || 'root';
-  const countKey = storageKeyPrefix + pageKey + '_count';
-  const authKey  = storageKeyPrefix + pageKey + '_authorized';
-
-  // Authorize either if already authorized on this device, or if the secret token matches.
-  const params = new URLSearchParams(location.search);
-  const tokenFromUrl = params.get(secretParam);
-  const alreadyAuthorized = localStorage.getItem(authKey) === '1';
-  const authorizedNow = alreadyAuthorized || (!!tokenFromUrl && tokenFromUrl === secretToken);
-
-  if(!authorizedNow) return; // Do not show or increment for other visitors.
-
-  localStorage.setItem(authKey, '1');
-
-  const current = Number.parseInt(localStorage.getItem(countKey) || '0', 10);
-  const next = current + 1;
-  localStorage.setItem(countKey, String(next));
-
-  el.style.display = 'block';
-  el.textContent = 'Views: ' + next;
-})();
-
-</script>
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.querySelectorAll(".modal.show").forEach((modal) => closeModal(modal.id));
+      }
+    });
+  </script>
 </body>
 </html>
