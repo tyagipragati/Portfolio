@@ -188,6 +188,18 @@
       place-items: center;
     }
 
+    .view-count-line {
+      margin-top: 10px;
+      color: #b9c1e7;
+      font-size: 0.85rem;
+    }
+
+    .view-count-line strong {
+      color: #e8ecff;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
     .sticky-note {
       position: fixed;
       right: 22px;
@@ -1057,6 +1069,7 @@
       <a href="https://linkedin.com/in/tyagi-pragati" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
     </div>
     <p style="margin-top:8px;color:#b9c1e7;font-size:.85rem;">© <span id="year"></span> Pragati Tyagi. All rights reserved.</p>
+    <p class="view-count-line" aria-live="polite">Site views: <strong id="view-count">…</strong></p>
   </footer>
 
   <aside class="sticky-note">
@@ -1437,6 +1450,25 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function loadViewCount() {
+      var el = document.getElementById("view-count");
+      if (!el) return;
+      var counterUrl = "https://abacus.jasoncameron.dev/hit/pragati-tyagi-portfolio/site-visits";
+      fetch(counterUrl, { method: "GET", cache: "no-store" })
+        .then(function (res) {
+          if (!res.ok) throw new Error("bad status");
+          return res.json();
+        })
+        .then(function (data) {
+          var n = data && typeof data.value === "number" ? data.value : null;
+          el.textContent = n != null ? n.toLocaleString() : "—";
+        })
+        .catch(function () {
+          el.textContent = "—";
+          el.setAttribute("title", "Counter loads when the site is served over HTTPS (not from a local file).");
+        });
+    })();
 
     (function initContactPhone() {
       var link = document.getElementById("contact-phone-link");
